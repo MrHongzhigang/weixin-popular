@@ -26,7 +26,7 @@ weixin-popular 已支持的微信平台
 <dependency>
   <groupId>com.github.liyiorg</groupId>
   <artifactId>weixin-popular</artifactId>
-  <version>2.8.20</version>
+  <version>2.8.25</version>
 </dependency>
 ```
 * [升级注意事项](https://github.com/liyiorg/weixin-popular/wiki/jar_update)
@@ -37,7 +37,7 @@ weixin-popular 已支持的微信平台
 * [MaterialAPI](https://github.com/liyiorg/weixin-popular/wiki/MaterialAPI) 永久素材
 * [MenuAPI](https://github.com/liyiorg/weixin-popular/wiki/MenuAPI) 菜单、个性化菜单
 * [MessageAPI](https://github.com/liyiorg/weixin-popular/wiki/MessageAPI) 信息发送（客服消息、群发消息、模板消息）
-* [PayMchAPI](https://github.com/liyiorg/weixin-popular/wiki/PayMchAPI) 支付订单、红包、企业付款、代扣费(商户平台版)
+* [PayMchAPI](https://github.com/liyiorg/weixin-popular/wiki/PayMchAPI) 支付订单、红包、企业付款、委托代扣、代扣费(商户平台版)、分账
 * [QrcodeAPI](https://github.com/liyiorg/weixin-popular/wiki/QrcodeAPI) 二维码
 * [SnsAPI](https://github.com/liyiorg/weixin-popular/wiki/SnsAPI) 网签授权
 * [UserAPI](https://github.com/liyiorg/weixin-popular/wiki/UserAPI) 用户管理、分组、标签、黑名单
@@ -55,12 +55,12 @@ weixin-popular 已支持的微信平台
 * [WxopenAPI](https://github.com/liyiorg/weixin-popular/wiki/WxopenAPI) 微信小程序
 * [CommentAPI](https://github.com/liyiorg/weixin-popular/wiki/CommentAPI) 文章评论留言
 * [OpenAPI](https://github.com/liyiorg/weixin-popular/wiki/OpenAPI) 微信开放平台帐号管理
-
-### 待开发API
-* [BizwifiAPI](https://github.com/liyiorg/weixin-popular/wiki/BizwifiAPI) 微信连Wi-Fi
-* [MerchantAPI](https://github.com/liyiorg/weixin-popular/wiki/MerchantAPI) 微信小店
+* [BizwifiAPI](https://github.com/liyiorg/weixin-popular/wiki/BizwifiAPI) 微信连WiFi
 * [ScanAPI](https://github.com/liyiorg/weixin-popular/wiki/ScanAPI) 微信扫一扫
 * [SemanticAPI](https://github.com/liyiorg/weixin-popular/wiki/SemanticAPI) 微信智能
+
+### 待开发API
+* [MerchantAPI](https://github.com/liyiorg/weixin-popular/wiki/MerchantAPI) 微信小店
 * [DeviceAPI](https://github.com/liyiorg/weixin-popular/wiki/DeviceAPI) 设备功能
 
 ## API调用模式
