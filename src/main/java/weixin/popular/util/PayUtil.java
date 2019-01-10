@@ -10,15 +10,22 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.qq.weixin.mp.aes.PKCS7Encoder;
 
+import weixin.popular.api.PayMchAPI;
 import weixin.popular.bean.paymch.MchPayApp;
 import weixin.popular.bean.paymch.MchPayNativeReply;
 import weixin.popular.bean.paymch.PapayEntrustweb;
+import weixin.popular.bean.paymch.PapayH5entrustwebResult;
 import weixin.popular.bean.paymch.RefundNotifyReqInfo;
+import weixin.popular.bean.paymch.WxaEntrustwebData;
 
-public class PayUtil {
+public abstract class PayUtil {
+	
+	private static Logger logger = LoggerFactory.getLogger(PayUtil.class);
 
 	/**
 	 * (MCH)生成支付JS请求对象
@@ -119,7 +126,7 @@ public class PayUtil {
 	}
 
 	/**
-	 * 生成代扣签约URL
+	 * 生成委托代扣-公众号、APP 纯签约
 	 * 
 	 * @param papayEntrustweb
 	 *            papayEntrustweb
@@ -134,7 +141,44 @@ public class PayUtil {
 		String params = MapUtil.mapJoin(map, false, true);
 		return "https://api.mch.weixin.qq.com/papay/entrustweb?" + params;
 	}
-
+	
+	/**
+	 * 生成委托代扣-H5 纯签约
+	 * @since 2.8.24
+	 * @param papayEntrustweb
+	 *            papayEntrustweb
+	 * @param key
+	 *            key
+	 * @return url
+	 */
+	public static String generatePapayH5EntrustwebURL(PapayEntrustweb papayEntrustweb, String key) {
+		PapayH5entrustwebResult result = PayMchAPI.papayH5entrustweb(papayEntrustweb, key);
+		if (result != null && "SUCCESS".equals(result.getResult_code())) {
+			return result.getRedirect_url();
+		}
+		return null;
+	}
+	
+	/**
+	 * 生成委托代扣-小程序 纯签约
+	 * @since 2.8.24
+	 * @param papayEntrustweb
+	 *            papayEntrustweb
+	 * @param key
+	 *            key
+	 * @return url
+	 */
+	public static WxaEntrustwebData generatePapayWxaEntrustweb(PapayEntrustweb papayEntrustweb, String key) {
+		Map<String, String> map = MapUtil.objectToMap(papayEntrustweb);
+		String sign = SignatureUtil.generateSign(map, "HMAC-SHA256", key);
+		papayEntrustweb.setSign(sign);
+		WxaEntrustwebData wxaEntrustwebData = new WxaEntrustwebData();
+		wxaEntrustwebData.setAppId(papayEntrustweb.getAppid());
+		wxaEntrustwebData.setExtraData(papayEntrustweb);
+		wxaEntrustwebData.setPath("pages/index/index");
+		return wxaEntrustwebData;
+	}
+	
 	/**
 	 * 解密退款结果通知数据 <br>
 	 * 
@@ -164,7 +208,7 @@ public class PayUtil {
 			String data = new String(PKCS7Encoder.decode(resultByte));
 			return XMLConverUtil.convertToObject(RefundNotifyReqInfo.class, data);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("", e);
 		}
 		return null;
 	}

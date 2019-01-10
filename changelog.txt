@@ -2,6 +2,54 @@ WEIXIN-POPULAR CHANGELOG
 ===========================
 https://github.com/liyiorg/weixin-popular
 
+Changes in version 2.8.25 (2018-12-18)
+-------------------------------------
+* 委托代扣  参数补充
+* #183 XMLConverUtil XXE 处理
+* #186 添加服务商分账接口
+* #187 卡券基础信息添加字段 get_custom_code_mode,use_limit
+* #188 MediaType 拼写错误修改
+* #190 修复WxaUtil的decryptUserInfo方法中文乱码问题
+
+Changes in version 2.8.24 (2018-10-12)
+-------------------------------------
+* 委托代扣 添加支付中签约接口
+* 委托代扣 PayUtil 添加纯签约方式
+* JsUtil 添加1.4 接口支持
+
+Changes in version 2.8.23 (2018-09-12)
+-------------------------------------
+* #175 XMLConverUtil 多线程问题修复
+
+
+Changes in version 2.8.22 (2018-08-22)
+-------------------------------------
+* 改进XML XXE 处理
+* 添加部分bean类构造方法
+* 添加 BizwifiAPI 微信连WiFi
+* 添加 ScanAPI 微信扫一扫
+* 添加 SemanticAPI 微信智能
+* 修改微信支付对账单数据下载
+
+Changes in version 2.8.21 (2018-07-06)
+-------------------------------------
+* 退款申请接口添加 refund_desc 退款原因字段
+* 升级依赖emoji-java 版本到 4.0.0
+* 升级依赖fastjson 版本到 1.2.47
+* #156 JsUtil.generateConfigJson 规范JSON数据格式
+* #157 统一下单添加H5 场景支持
+* #158 #159 XML 解析 XXE漏洞处理
+
+
+Changes in version 2.8.20 (2018-05-28)
+-------------------------------------
+* #101 #150 card模块中的BaseInfo对象添加 use_all_locations 字段
+* #146 ComponentAPI.componentloginpage增加auth_type参数
+* #154 获取用户信息接口添加字段
+* #153 添加 ComponentTokenManager 接口类
+* WxaAPI 添加内容安全检查接口 msgSecCheck imgSecCheck
+* MessageAPI.mediaUploadvideo 接口修改 uri 地址
+
 Changes in version 2.8.19 (2018-04-08)
 -------------------------------------
 * #145 小程序添加用户画像接口
